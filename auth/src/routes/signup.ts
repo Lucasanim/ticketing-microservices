@@ -1,5 +1,6 @@
 import express, { Request, Response } from "express";
 import { body, validationResult } from "express-validator";
+import { RequestValidationError } from "../errors/request-validation-error";
 const router = express.Router();
 
 router.post(
@@ -14,7 +15,7 @@ router.post(
   (req: Request, res: Response) => {
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
-      return res.status(400).send(errors.array());
+      throw new RequestValidationError(errors.array());
     }
 
     const { email, password } = req.body;
