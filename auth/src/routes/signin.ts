@@ -23,7 +23,11 @@ router.post(
 
     const existingUser = await User.findOne({ email });
 
-    if (!existingUser || !Password.compare(existingUser.password, password)) {
+    const isValidRequest =
+      existingUser &&
+      (await Password.compare(existingUser?.password, password));
+
+    if (!isValidRequest) {
       throw new BadRequestError("Invalid credentials");
     }
 
