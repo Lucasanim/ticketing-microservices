@@ -2,12 +2,14 @@ import express from "express";
 import "express-async-errors";
 import { json } from "body-parser";
 
-import { currentUserRouter } from "./routes/current-user";
-import { signinRouter } from "./routes/signin";
-import { signoutRouter } from "./routes/signout";
-import { signupRouter } from "./routes/signup";
-import { errorHandler, NotFoundError } from "@ticketing-com/common";
+import {
+  currentUser,
+  errorHandler,
+  NotFoundError,
+} from "@ticketing-com/common";
 import cookieSession from "cookie-session";
+import { createTicketRouter } from "./routes/new";
+import { showTicketRouter } from "./routes/show";
 
 const app = express();
 app.set("trust proxy", true);
@@ -19,10 +21,10 @@ app.use(
   })
 );
 
-app.use(currentUserRouter);
-app.use(signinRouter);
-app.use(signoutRouter);
-app.use(signupRouter);
+app.use(currentUser);
+
+app.use(createTicketRouter);
+app.use(showTicketRouter);
 
 app.all("*", () => {
   throw new NotFoundError();
