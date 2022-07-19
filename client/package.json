@@ -7,7 +7,7 @@
     "dev": "next"
   },
   "keywords": [],
-  "author": "",
+  "author": "Lucas Vazquez",
   "license": "ISC",
   "dependencies": {
     "axios": "^0.21.1",

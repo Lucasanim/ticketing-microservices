@@ -1,6 +1,6 @@
 {
   "name": "@ticketing-com/common",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "",
   "main": "./build/index.js",
   "types": "./build/index.d.ts",
@@ -13,7 +13,7 @@
     "pub": "npm version patch && npm run build && npm publish"
   },
   "keywords": [],
-  "author": "",
+  "author": "Lucas Vazquez",
   "license": "ISC",
   "dependencies": {
     "@types/cookie-session": "^2.0.44",
